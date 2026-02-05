@@ -2,12 +2,15 @@ FROM node:22-bookworm
 
 # Instalar Go para construir wacli
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends golang-go ca-certificates && \
+wget     apt-get install -y --no-install-recommends golang-go ca-certificates && \
+        wget https://go.dev/dl/go1.22.0.linux-amd64.tar.gz && \
+            tar -C /usr/local -xzf go1.22.0.linux-amd64.tar.gz && \
+            
         rm -rf /var/lib/apt/lists/*
 
 # Install Bun (required for build scripts)
 RUN curl -fsSL https://bun.sh/install | bash
-ENV PATH="/root/.bun/bin:${PATH}"
+/usr/local/go/bin:ENV PATH="/root/.bun/bin:${PATH}
 
 RUN corepack enable
 
