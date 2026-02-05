@@ -2,7 +2,7 @@ FROM node:22-bookworm
 
 # Instalar Go para construir wacli
 RUN apt-get update && \
-wget     apt-get install -y --no-install-recommends golang-go ca-certificates && \
+    apt-get install -y --no-install-recommends wget golang-go ca-certificates && \
         wget https://go.dev/dl/go1.22.0.linux-amd64.tar.gz && \
             tar -C /usr/local -xzf go1.22.0.linux-amd64.tar.gz && \
             
