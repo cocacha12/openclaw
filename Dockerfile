@@ -10,8 +10,7 @@ wget     apt-get install -y --no-install-recommends golang-go ca-certificates &&
 
 # Install Bun (required for build scripts)
 RUN curl -fsSL https://bun.sh/install | bash
-/usr/local/go/bin:ENV PATH="/root/.bun/bin:${PATH}
-
+ENV PATH="/usr/local/go/bin:/root/.bun/bin:${PATH}"
 RUN corepack enable
 
 WORKDIR /app
